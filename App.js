@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 150,
-    height: 150,
+    height: 200,
     marginBottom: 10,
   },
   questionText: {
