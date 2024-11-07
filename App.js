@@ -1,10 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, Button, Alert, ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-// List of animals
 const animeData = [
   { name: 'Attack on Titan', image: require('./img/Attack_On_Titan.jpg') },
   { name: 'Death Note', image: require('./img/Death_Note.jpg') },
@@ -14,7 +12,6 @@ const animeData = [
   { name: 'That time I got Reincarnated as a Slime', image: require('./img/Tensura.jpg') },
 ];
 
-// Randomly select 3 animals
 const getRandomQuestions = (data, num) => {
   const shuffled = data.sort(() => 0.5 - Math.random());
   return shuffled.slice(0, num);
@@ -44,7 +41,6 @@ export default function App() {
     Alert.alert(`You got ${correctAnswers} out of ${questions.length} correct! ${feedback}`);
   };
 
-
   return (
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.title}>
@@ -73,44 +69,52 @@ export default function App() {
         <View style={styles.buttonContainer}>
           <Button title="Submit Answers" onPress={handleSubmit} />
         </View>
-        <StatusBar style="auto" />
       </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1, // Allow the container to grow with content
-    backgroundColor: '#fff',
+    backgroundColor: '#eeeeee',
     padding: 20,
   },
   title: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
-    marginBottom: 20,
-    alignItems: 'center',
+    marginBottom: 15,
+    textAlign: 'center',
+    color: '#333',
   },
   questionContainer: {
-    marginVertical: 20,
+    marginVertical: 15,
     alignItems: 'center',
+    padding: 15,
+    backgroundColor: '#ccf3f8',
+    borderRadius: 10,
   },
   image: {
-    width: 150,
+    width: '100%',
     height: 200,
+    borderRadius: 10,
     marginBottom: 10,
   },
   questionText: {
     fontSize: 18,
     marginBottom: 10,
+    fontWeight: '600',
+    color: '#333',
   },
   picker: {
+    width: '80%',
     height: 50,
-    width: 200,
-    marginBottom: 20, // Add some margin for better spacing
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 5,
+    marginBottom: 20,
+    backgroundColor: '#fff',
   },
   buttonContainer: {
-    marginVertical: 20,
-    width: '100%',
+    marginVertical: 15,
     alignItems: 'center',
   },
 });
